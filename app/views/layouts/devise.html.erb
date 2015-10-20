@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PaakCommunity</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <div class="container">
+    <% if notice.present? %>
+      <p class="bg-info main-notification"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="bg-danger main-notification"><%= alert %></p>
+    <% end %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+        <%= yield %>
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+  </div>
+</body>
+</html>

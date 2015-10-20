@@ -1,0 +1,96 @@
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 70px;
+}
+
+a {
+  color: #555;
+  &:hover {
+    color: #222;
+    background-color: transparent;
+  }
+  &:visited {
+    color: inherited !important;
+  }
+}
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  padding-top: 13px;
+  font-weight: bold;
+  line-height: 1;
+  &:active, &:selected{
+    text-decoration: none;
+  }
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+
+  small {
+    float: left;
+  }
+
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+/* others */
+
+p {
+  &.main-notification {
+    padding: 10px;
+  }
+  &.sub-notification {
+    padding:  5px 10px;
+  }
+}
+
+h1, h2, h3, h4 {
+  &.title {
+    font-size: 24px;
+    color: #777;
+    margin: 10px 0px 20px;
+  }
+  &.sub-title {
+    font-size: 18px;
+    color: #999;
+    margin: 10px 0;
+  }
+}
+
+.devise-links {
+  padding: 20px 0px;
+}
+
+form {
+  &.form-normal {
+    max-width: 600px;
+  }
+}

@@ -1,0 +1,6 @@
+<h1 class='title'><%= "#{@membership.period.explanation}:#{@membership.user.try(:name) || @membership.name}のメンバーシップの編集" %></h1>
+
+<%= render 'form' %>
+
+<hr>
+<%= link_to '戻る', @membership.period %>

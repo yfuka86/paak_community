@@ -1,0 +1,24 @@
+<h1 class='title'><%= @period.explanation %></h2>
+
+<p>
+  <strong>期（数字）</strong>
+  <%= @period.number %>
+</p>
+
+<p>
+  <strong>メンバー種別</strong>
+  <%= @period.code %>
+</p>
+
+<%= link_to '編集', edit_period_path(@period) %> |
+<%= link_to '戻る', periods_path %>
+
+<% if @memberships.present? %>
+  <hr>
+  <h2 class='sub-title'>メンバー一覧</h2>
+  <%= render 'periods/members', memberships: @memberships %>
+<% end %>
+
+<hr>
+<h2 class='sub-title'>メンバー追加</h2>
+<%= render 'periods/add_member_form' %>

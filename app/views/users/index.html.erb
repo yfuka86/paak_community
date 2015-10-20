@@ -1,0 +1,9 @@
+<h1 class='title'>ユーザー一覧</h1>
+
+<%= render 'users/table', users: @accepted_users %>
+
+<% if current_user.is_admin %>
+  <h2 class='sub-title'>どの期にも追加されていないユーザー一覧</h2>
+
+  <%= render 'users/table', users: @unaccepted_users %>
+<% end %>

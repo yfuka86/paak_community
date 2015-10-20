@@ -1,0 +1,31 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>paak会員番号</th>
+      <th>paak登録名</th>
+      <th>ユーザー名</th>
+      <th>facebook</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% memberships.each do |membership| %>
+      <tr>
+        <td><%= membership.paak_id %></td>
+        <td><%= membership.name %></td>
+        <td><%= membership.user.try(:name) %></td>
+        <td>
+          <% if membership.user.try(:facebook_url).present? %>
+            <%= link_to membership.user.facebook_url do %>
+              <span class='fa fa-facebook' />
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= link_to 'ユーザーを見る', membership.user if membership.user.present? %></td>
+        <td><%= link_to 'メンバーシップの編集', edit_membership_path(membership) %></td>
+        <td><%= link_to 'メンバーから削除', membership, method: :delete, data: { confirm: 'ユーザーは削除されません。メンバーシップのみ削除されます。よろしいですか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
