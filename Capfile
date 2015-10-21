@@ -1,6 +1,5 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/bundler'
-require 'capistrano/postgresql'
 require 'capistrano/rails'
 require 'capistrano/unicorn_nginx'

@@ -50,6 +50,5 @@ group :development, :test do
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
-  gem 'capistrano-postgresql', '~> 4.2.0'
   gem 'capistrano-unicorn-nginx', '~> 3.2.0'
 end

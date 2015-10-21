@@ -1,0 +1,26 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  reconnect: true
+  pool: 5
+  timeout: 5000
+  host: localhost
+
+development:
+  <<: *default
+  database: paak_development
+  username: mysql
+  password: 'root'
+
+test:
+  <<: *default
+  database: paak_test
+  username: mysql
+  password: 'root'
+
+production:
+  <<: *default
+  adapter: pg
+  database: paak_production
+  username: paak
+  password: 'paak2015'

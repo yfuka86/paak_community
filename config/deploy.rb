@@ -11,6 +11,8 @@ set :ssh_options, {
   port: 7231
 }
 
+set :linked_files, %w{config/database.yml}
+
 namespace :deploy do
   desc "Install everything onto the server"
   task :install do
@@ -56,4 +58,15 @@ BASHRC
     end
   end
   after "deploy:install", "rbenv:install"
+end
+
+namespace :postgresql do
+  desc "Install the latest stable release of PostgreSQL."
+  task :install do
+    on roles(:app), only: {primary: true} do
+      execute :sudo, "apt-get -y update"
+      execute :sudo, "apt-get -y install postgresql libpq-dev"
+    end
+  end
+  after "deploy:install", "postgresql:install"
 end
