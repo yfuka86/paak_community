@@ -1,3 +1,8 @@
+<h1 class='title'><%= @user.name %></h1>
+<% if current_user = @user %>
+  <h2 class='sub-title'>This is you!</h2>
+<% end %>
+
 <p>
   <strong>name:</strong>
   <%= @user.name %>

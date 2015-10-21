@@ -6,6 +6,8 @@ gem 'rails', '4.2.4'
 gem 'mysql2', '~> 0.3.13', group: :development
 gem 'pg', group: :production
 
+gem 'unicorn', group: :production
+
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -20,21 +22,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'font-awesome-sass', '~> 4.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.2'

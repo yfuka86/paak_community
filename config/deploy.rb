@@ -11,8 +11,6 @@ set :ssh_options, {
   port: 7231
 }
 
-set :linked_files, %w{config/database.yml}
-
 namespace :deploy do
   desc "Install everything onto the server"
   task :install do
