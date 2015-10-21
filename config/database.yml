@@ -20,7 +20,7 @@ test:
 
 production:
   <<: *default
-  adapter: pg
+  adapter: postgresql
   database: paak_production
   username: paak
   password: 'paak2015'
