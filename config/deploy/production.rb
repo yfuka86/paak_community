@@ -2,7 +2,6 @@ set :branch, 'master'
 
 set :stage, :production
 set :rails_env, :production
-set :db_host, 'localhost'
 
 set :bundle_binstubs, nil
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/shared}
