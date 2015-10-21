@@ -29,11 +29,7 @@ class UsersController < ApplicationController
   end
 
   def accept
-    check_user
-  end
 
-  def complete_accept
-    check_user
   end
 
   # DELETE /users/1

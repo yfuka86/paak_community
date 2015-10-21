@@ -3,7 +3,8 @@ ruby '2.2.2'
 
 gem 'rails', '4.2.4'
 
-gem 'mysql2', '~> 0.3.13'
+gem 'mysql2', '~> 0.3.13', group: :development
+gem 'pg', group: :production
 
 gem 'devise'
 gem 'omniauth'
@@ -51,6 +52,4 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-postgresql', '~> 4.2.0'
   gem 'capistrano-unicorn-nginx', '~> 3.2.0'
-  gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-rbenv-install', '~> 1.2.0'
 end
