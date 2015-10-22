@@ -15,7 +15,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
-        <td><%= project.period %></td>
+        <td><%= project.period.try(:explanation) %></td>
         <td><%= project.url %></td>
         <td><%= project.summary %></td>
         <td><%= link_to 'Show', project %></td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'プロジェクトの作成', new_project_path %>
+<%= link_to '新しくプロジェクトを作る', new_project_path, class: 'btn btn-default' %>

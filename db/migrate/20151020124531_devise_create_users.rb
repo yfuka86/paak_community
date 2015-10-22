@@ -33,7 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :url
       t.string :image_url
-      t.text :summary
+      t.text :bio
 
       t.boolean :is_admin
 

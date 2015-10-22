@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
+<h1 class='title'><%= @project.name %></h1>
 
 <p>
-  <strong>Name:</strong>
-  <%= @project.name %>
+  <strong>所属:</strong>
 </p>
-
 <p>
-  <strong>Period:</strong>
-  <%= @project.period %>
+  <%= @project.period.try(:explanation) %>
 </p>
 
 <p>
   <strong>Url:</strong>
+</p>
+<p>
   <%= @project.url %>
 </p>
 
 <p>
-  <strong>Summary:</strong>
+  <strong>概要:</strong>
+</p>
+<p>
   <%= @project.summary %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to '編集する', edit_project_path(@project), class: 'btn btn-default' %>
+<%= link_to 'プロジェクト一覧に戻る', projects_path, class: 'btn btn-default' %>

@@ -10,8 +10,15 @@
   <%= @period.code %>
 </p>
 
-<%= link_to '編集', edit_period_path(@period) %> |
-<%= link_to '戻る', periods_path %>
+<% if @period.start_date || @period.end_date %>
+  <p>
+    <strong>期間</strong>
+    <%= "#{@period.start_date}〜#{@period.end_date}" %>
+  </p>
+<% end %>
+
+<%= link_to '編集', edit_period_path(@period), class: 'btn btn-default' %>
+<%= link_to '戻る', periods_path, class: 'btn btn-default' %>
 
 <% if @memberships.present? %>
   <hr>

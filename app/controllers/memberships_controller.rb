@@ -3,6 +3,7 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/1/edit
   def edit
+    @user_candidate = User.candidate
   end
 
   # PATCH/PUT /memberships/1

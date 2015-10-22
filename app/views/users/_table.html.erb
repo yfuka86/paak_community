@@ -3,6 +3,7 @@
     <tr>
       <th>名前</th>
       <th>Facebook</th>
+      <th>メンバーシップ</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
             <span class='fa fa-facebook' />
           <% end %>
         </td>
+        <td><%= user.latest_period.try(:explanation) %></td>
         <td><%= link_to '詳細を見る', user %></td>
         <% if current_user.is_admin %>
           <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当にこのユーザーを削除してもよろしいですか？' } %></td>

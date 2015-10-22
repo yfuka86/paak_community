@@ -5,10 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, omniauth_providers: [:facebook]
 
   has_many :memberships
+  has_many :periods, through: :memberships
+  has_many :user_projects
+  has_many :projects, through: :user_projects
 
   scope :accepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where.not(memberships: {user_id: nil}).group(:id) }
   scope :unaccepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where(memberships: {user_id: nil}) }
-
+  scope :candidate, -> { order(name: :asc) }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -29,5 +32,9 @@ class User < ActiveRecord::Base
 
   def facebook_url
     self.provider == "facebook" ? "http://facebook.com/#{self.uid}" : ""
+  end
+
+  def latest_period
+    self.periods.order(end_date: :desc).first
   end
 end

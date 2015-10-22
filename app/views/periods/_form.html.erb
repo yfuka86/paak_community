@@ -1,6 +1,6 @@
 <%= form_for(@period, html:{class: 'form-normal'}) do |f| %>
   <% if @period.errors.any? %>
-    <div id="error_explanation">
+    <div id='error_explanation' class='bg-danger'>
       <h2><%= pluralize(@period.errors.count, "error") %> prohibited this period from being saved:</h2>
 
       <ul>
@@ -22,6 +22,12 @@
   <div class="form-group">
     <%= f.label '会員種別' %><br>
     <%= f.select :code, Period.codes.keys.to_a, {}, class: 'form-control' %>
+  </div>
+  <div class="form-group form-inline">
+    <%= f.label '期間' %><br>
+    <%= f.date_field :start_date, class: 'form-control' %>
+    〜
+    <%= f.date_field :end_date, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.submit '保存', class: 'btn btn-primary' %>

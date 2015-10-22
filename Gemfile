@@ -6,6 +6,8 @@ gem 'rails', '4.2.4'
 gem 'mysql2', '~> 0.3.13', group: :development
 gem 'pg', group: :production
 
+gem 'nested_form'
+
 gem 'unicorn', group: :production
 
 gem 'devise'

@@ -1,6 +1,6 @@
 <%= form_for(@membership, html:{class: 'form-normal'}) do |f| %>
   <% if @membership.errors.any? %>
-    <div id="error_explanation">
+    <div id='error_explanation' class='bg-danger'>
       <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
 
       <ul>
@@ -18,6 +18,10 @@
   <div class="form-group">
     <%= f.label 'paak登録名' %><br>
     <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label '該当ユーザーを選択' %><br>
+    <%= f.select :user_id, options_for_select(@user_candidate.map{|user| [user.name, user.id]}), { prompt: 'なし' }, class: 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit '保存', class: 'btn btn-primary' %>

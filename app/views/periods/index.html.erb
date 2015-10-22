@@ -6,6 +6,7 @@
       <th>期</th>
       <th>メンバー種別</th>
       <th>名前</th>
+      <th>期間</th>
       <th>メンバー数</th>
       <th colspan="2"></th>
     </tr>
@@ -17,6 +18,7 @@
         <td><%= period.number %></td>
         <td><%= period.code %></td>
         <td><%= period.explanation %></td>
+        <td><%= "#{period.start_date}〜#{period.end_date}" if period.start_date || period.end_date %></td>
         <td><%= period.memberships.count %></td>
         <td><%= link_to '詳細を見る', period %></td>
         <td><%= link_to '削除', period, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } %></td>
@@ -27,4 +29,4 @@
 
 <br>
 
-<%= link_to '新規作成', new_period_path %>
+<%= link_to '新規作成', new_period_path, class: 'btn btn-default' %>

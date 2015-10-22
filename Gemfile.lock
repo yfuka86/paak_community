@@ -124,6 +124,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.20)
+    nested_form (0.3.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
@@ -262,6 +263,7 @@ DEPENDENCIES
   jquery-rails
   koala (~> 2.2)
   mysql2 (~> 0.3.13)
+  nested_form
   omniauth
   omniauth-facebook
   pg

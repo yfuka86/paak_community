@@ -1,6 +1,6 @@
 <%= form_for(@project, html:{class: 'form-normal'}) do |f| %>
   <% if @project.errors.any? %>
-    <div id="error_explanation">
+    <div id='error_explanation' class='bg-danger'>
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label '名前' %><br>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :period %><br>
-    <%= f.text_field :period %>
+  <div class="form-group">
+    <%= f.label '所属' %><br>
+    <%= f.select :period_id, options_for_select(@periods.map{|period| [period.explanation, period.id]}), { prompt: '所属の期を選択'}, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
+  <div class="form-group">
+    <%= f.label '概要' %><br>
+    <%= f.text_area :summary, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '保存', class: 'btn btn-primary' %>
   </div>
 <% end %>

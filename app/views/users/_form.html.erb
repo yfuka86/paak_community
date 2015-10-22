@@ -1,6 +1,6 @@
 <%= form_for(@user, html:{class: 'form-normal'}) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div id='error_explanation' class='bg-danger'>
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this period from being saved:</h2>
 
       <ul>
@@ -17,7 +17,15 @@
   </div>
   <div class="form-group">
     <%= f.label :url %>
-    <%= f.number_field :url, class: 'form-control' %>
+    <%= f.text_field :url, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :bio %>
+    <%= f.text_area :bio, class: 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit '保存', class: 'btn btn-primary' %>

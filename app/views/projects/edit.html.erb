@@ -1,6 +1,8 @@
-<h1>Editing Project</h1>
+<h1 class='title'>プロジェクトの内容を編集</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<hr>
+
+<%= link_to 'プロジェクトのページを見る', @project, class: 'btn btn-default' %>
+<%= link_to '戻る', projects_path, class: 'btn btn-default' %>

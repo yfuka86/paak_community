@@ -8,7 +8,7 @@ class PeriodsController < ApplicationController
 
   def show
     @memberships = @period.memberships
-    @user_candidate = User.all
+    @user_candidate = User.candidate
   end
 
   def new
@@ -55,7 +55,7 @@ class PeriodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def period_params
-      params.require(:period).permit(:number, :code, :explanation)
+      params.require(:period).permit(:number, :code, :explanation, :start_date, :end_date)
     end
 
     def add_member_params

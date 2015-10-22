@@ -6,14 +6,33 @@
 <% end %>
 
 <hr>
-<p>
-  <strong>name:</strong>
-  <%= @user.name %>
-</p>
 
-<p>
-  <strong>url:</strong>
-  <%= @user.url %>
-</p>
+<%= image_tag @user.image_url + '?width=200&height=200', class: 'img-rounded pull-left', width: 200, height: 200 %>
+
+<div class='user-profile'>
+  <p>
+    <strong>名前</strong>
+  </p>
+  <p>
+    <%= @user.name %>
+  </p>
+
+  <p>
+    <strong>url</strong>
+  </p>
+  <p>
+    <%= @user.url %>
+  </p>
+
+  <p>
+    <strong>bio</strong>
+  </p>
+  <p>
+    <%= @user.bio %>
+  </p>
+</div>
+
+<div class='clearfix'></div>
+
 <hr>
 <%= link_to '戻る', users_path %>
