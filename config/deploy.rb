@@ -68,3 +68,14 @@ namespace :postgresql do
   end
   after "deploy:install", "postgresql:install"
 end
+
+namespace :nginx do
+  desc "Install latest stable release of nginx"
+  task :install do
+    on roles(:app) do
+      execute :sudo, "apt-get -y update"
+      execute :sudo, "apt-get -y install nginx"
+    end
+  end
+  after "deploy:install", "nginx:install"
+end
