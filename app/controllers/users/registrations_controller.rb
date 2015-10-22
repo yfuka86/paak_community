@@ -13,14 +13,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    render 'edit', layout: 'application'
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    layout
+    @user = current_user
+    if (@user.provider && @user.update(user_params)) || (!@user.provider && @user.update_with_password(user_params))
+      redirect_to @user, notice: '登録情報を編集しました。' and return
+    else
+      render 'edit', layout: 'application'
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -57,4 +63,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def user_params
+    params.required(:user).permit(:email, :name, :password, :password_confirmation, :current_password, :mail_flag)
+  end
 end
