@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
       redirect_to pending_path and return
     end
   end
+
+  def redirect_to_root
+    flash[:alert] = 'このページにはアクセスできません'
+    redirect_to root_path and return
+  end
 end

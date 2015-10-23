@@ -1,23 +1,27 @@
 class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
-  # def new
-  #   super
-  # end
+  def new
+    redirect_to_root
+    # super
+  end
 
   # POST /resource/password
-  # def create
-  #   super
-  # end
+  def create
+    redirect_to_root
+    # super
+  end
 
   # GET /resource/password/edit?reset_password_token=abcdef
-  # def edit
-  #   super
-  # end
+  def edit
+    redirect_to_root
+    # super
+  end
 
   # PUT /resource/password
-  # def update
-  #   super
-  # end
+  def update
+    redirect_to_root
+    # super
+  end
 
   # protected
 
