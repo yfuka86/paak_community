@@ -7,5 +7,6 @@ class CreateRecords < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :records, :member_id
   end
 end

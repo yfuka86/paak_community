@@ -13,8 +13,10 @@
       <tr>
         <td><%= user.name %></td>
         <td>
-          <%= link_to user.facebook_url do %>
-            <span class='fa fa-facebook' />
+          <% if membership.user.try(:facebook_url).present? %>
+            <%= link_to membership.user.facebook_url do %>
+              <span class='fa fa-facebook' />
+            <% end %>
           <% end %>
         </td>
         <td><%= user.latest_period.try(:explanation) %></td>

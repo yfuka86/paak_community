@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :user_projects
   has_many :projects, through: :user_projects
 
+  validates_presence_of :name
+
   scope :accepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where.not(memberships: {user_id: nil}).group(:id) }
   scope :unaccepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where(memberships: {user_id: nil}) }
   scope :candidate, -> { order(name: :asc) }

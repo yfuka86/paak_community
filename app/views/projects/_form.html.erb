@@ -1,4 +1,4 @@
-<%= form_for(@project, html:{class: 'form-normal'}) do |f| %>
+<%= nested_form_for(@project, html:{class: 'form-normal'}) do |f| %>
   <% if @project.errors.any? %>
     <div id='error_explanation' class='bg-danger'>
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -12,21 +12,34 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label '名前' %><br>
+    <%= f.label '名前' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label '所属' %><br>
-    <%= f.select :period_id, options_for_select(@periods.map{|period| [period.explanation, period.id]}), { prompt: '所属の期を選択'}, class: 'form-control' %>
+    <%= f.label '所属' %>
+    <%= f.select :period_id, options_for_select(@periods.map{|period| [period.explanation, period.id]}), { prompt: '所属の期を選択' }, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :url %><br>
+    <%= f.label :url %>
     <%= f.text_field :url, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label '概要' %><br>
+    <%= f.label '概要' %>
     <%= f.text_area :summary, class: 'form-control' %>
   </div>
+
+  <%= f.label 'ユーザー一覧' %>
+  <%= f.fields_for :user_projects do |f| %>
+    <div class='form-group form-inline'>
+      <%= f.select :user_id, options_for_select(@users.map{|user| [user.name, user.id]}, f.object.user_id), { prompt: 'このプロジェクトのユーザーを選択' }, class: 'form-control form-has-many' %>
+      <%= f.link_to_remove "削除", class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+
+  <div class='form-group'>
+    <%= f.link_to_add "ユーザーを追加", :user_projects, class: 'btn btn-default' %>
+  </div>
+
   <div class="actions">
     <%= f.submit '保存', class: 'btn btn-primary' %>
   </div>

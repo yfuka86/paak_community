@@ -8,5 +8,6 @@ class CreateMemberships < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :memberships, [:period_id, :user_id], unique: true, using: :btree
   end
 end
