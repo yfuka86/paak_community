@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20151022211534) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "memberships", ["period_id", "user_id"], name: "index_memberships_on_period_id_and_user_id", unique: true, using: :btree
+
   create_table "periods", force: :cascade do |t|
     t.integer  "number",      limit: 4
     t.integer  "code",        limit: 4
@@ -36,6 +38,7 @@ ActiveRecord::Schema.define(version: 20151022211534) do
     t.string   "name",       limit: 255
     t.integer  "period_id",  limit: 4
     t.string   "url",        limit: 255
+    t.string   "image_url",  limit: 255
     t.text     "summary",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
@@ -49,12 +52,16 @@ ActiveRecord::Schema.define(version: 20151022211534) do
     t.datetime "updated_at",           null: false
   end
 
+  add_index "records", ["member_id"], name: "index_records_on_member_id", using: :btree
+
   create_table "user_projects", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "project_id", limit: 4
+    t.integer  "user_id",    limit: 4, null: false
+    t.integer  "project_id", limit: 4, null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "user_projects", ["project_id", "user_id"], name: "index_user_projects_on_project_id_and_user_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -67,7 +74,7 @@ ActiveRecord::Schema.define(version: 20151022211534) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.string   "name",                   limit: 255
+    t.string   "name",                   limit: 255,                null: false
     t.string   "url",                    limit: 255
     t.string   "image_url",              limit: 255
     t.text     "bio",                    limit: 65535

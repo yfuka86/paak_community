@@ -3,11 +3,12 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Period</th>
+      <th>名前</th>
+      <th>所属</th>
       <th>Url</th>
-      <th>Summary</th>
-      <th colspan="3"></th>
+      <th>概要</th>
+      <th>メンバー</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,9 +19,8 @@
         <td><%= project.period.try(:explanation) %></td>
         <td><%= project.url %></td>
         <td><%= project.summary[0, 70] %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= project.users.pluck(:name).join(', ') %></td>
+        <td><%= link_to '詳細を見る', project %></td>
       </tr>
     <% end %>
   </tbody>

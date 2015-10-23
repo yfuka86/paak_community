@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name
       t.integer :period_id
       t.string :url
+      t.string :image_url
       t.text :summary
 
       t.timestamps null: false

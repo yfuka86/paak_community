@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_options, only: [:new, :edit, :create, :update]
+  before_action :authenticate_member!, only: [:edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
@@ -65,6 +66,12 @@ class ProjectsController < ApplicationController
     def set_options
       @periods = current_user.periods
       @users = User.candidate
+    end
+
+    def authenticate_member!
+      unless current_user.is_admin || current_user.in?(@project.users)
+        redirece_to :back, notice: '権限がありません' and return
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
