@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
+  before_action :authenticate_member!
 
   def authenticate_admin!
     unless current_user.try(:is_admin)
@@ -12,8 +13,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_to_root
-    flash[:alert] = 'このページにはアクセスできません'
-    redirect_to root_path and return
+  def authenticate_member!
+    if current_user && !current_user.is_admin && current_user.periods.blank?
+      redirect_to pending_path and return
+    end
   end
 end
