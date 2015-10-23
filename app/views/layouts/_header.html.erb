@@ -6,19 +6,19 @@
         <ul class="nav navbar-nav navbar-left">
           <% if current_user %>
             <% if current_user.is_admin %>
-              <li><%= link_to "Admin:Periods", periods_path %></li>
+              <li><%= link_to "Admin:Period", periods_path %></li>
             <% end %>
-            <li><%= link_to "Members", users_path %></li>
-            <li><%= link_to "Projects", projects_path %></li>
-            <li><%= link_to "My page", user_path(current_user) %></li>
+            <li><%= link_to "メンバー", users_path %></li>
+            <li><%= link_to "プロジェクト", projects_path %></li>
+            <li><%= link_to "マイページ", user_path(current_user) %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
-            <li><%= link_to "Sign in", new_user_session_path %></li>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
           <% end %>
         </ul>
       </nav>

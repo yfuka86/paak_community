@@ -1,4 +1,4 @@
-<h2 class='title'>Sign in</h2>
+<h2 class='title'>ログイン</h2>
 
 <!--<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-normal'}) do |f| %>
   <div class='form-group'>
@@ -20,7 +20,7 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= link_to omniauth_authorize_path(resource_name, provider), class: 'btn btn-primary'  do %>
       <span class='fa fa-facebook'></span>
-      <%= "Sign in with #{provider.to_s.titleize}" %>
+      <%= "#{provider.to_s.titleize}でログイン" %>
     <% end %>
   <% end -%>
 <% end -%>
