@@ -6,7 +6,8 @@
         <ul class="nav navbar-nav navbar-left">
           <% if current_user %>
             <% if current_user.is_admin %>
-              <li><%= link_to "Admin:Period", periods_path %></li>
+              <li><%= link_to "Admin:メンバー管理", periods_path %></li>
+              <li><%= link_to "Admin:入退館", records_path %></li>
             <% end %>
             <li><%= link_to "メンバー", users_path %></li>
             <li><%= link_to "プロジェクト", projects_path %></li>

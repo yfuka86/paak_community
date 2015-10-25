@@ -26,4 +26,5 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :records, only: [:index, :create]
 end

@@ -12,6 +12,7 @@ class MembershipsController < ApplicationController
     if @membership.update(membership_params)
       redirect_to @membership.period, notice: 'メンバーシップが編集されました' and return
     else
+      @user_candidate = User.candidate
       render :edit
     end
   end

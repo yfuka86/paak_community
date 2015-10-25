@@ -16,12 +16,13 @@ ActiveRecord::Schema.define(version: 20151022211534) do
   create_table "memberships", force: :cascade do |t|
     t.integer  "paak_id",    limit: 4
     t.integer  "user_id",    limit: 4
-    t.integer  "period_id",  limit: 4
+    t.integer  "period_id",  limit: 4,   null: false
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
+  add_index "memberships", ["period_id", "paak_id"], name: "index_memberships_on_period_id_and_paak_id", unique: true, using: :btree
   add_index "memberships", ["period_id", "user_id"], name: "index_memberships_on_period_id_and_user_id", unique: true, using: :btree
 
   create_table "periods", force: :cascade do |t|
@@ -46,13 +47,13 @@ ActiveRecord::Schema.define(version: 20151022211534) do
 
   create_table "records", force: :cascade do |t|
     t.datetime "timestamp"
-    t.integer  "member_id",  limit: 4
-    t.integer  "code",       limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "membership_id", limit: 4
+    t.integer  "code",          limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "records", ["member_id"], name: "index_records_on_member_id", using: :btree
+  add_index "records", ["membership_id"], name: "index_records_on_membership_id", using: :btree
 
   create_table "user_projects", force: :cascade do |t|
     t.integer  "user_id",    limit: 4, null: false

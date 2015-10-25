@@ -16,5 +16,6 @@ class WelcomeController < ApplicationController
   end
 
   def current
+    @current_memberships = Membership.current_in_paak.includes(:user)
   end
 end
