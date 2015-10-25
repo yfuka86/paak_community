@@ -5,6 +5,7 @@ class Api::UsersController < Api::BaseController
     render json: {
       users: @current_memberships.map do |m|
         {
+          id: m.user.id,
           name: m.user.name,
           image_url: m.user.image_url,
           facebook_url: m.user.try(:facebook_url),

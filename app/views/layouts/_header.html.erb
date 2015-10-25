@@ -1,9 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "PAAK Members Site", root_path, id: "logo" %>
       <nav>
         <ul class="nav navbar-nav navbar-left">
+          <li><%= link_to "PAAK Members Site", root_path, id: "logo" %></li>
           <% if current_user %>
             <% if current_user.is_admin %>
               <li><%= link_to "Admin:メンバー管理", periods_path %></li>

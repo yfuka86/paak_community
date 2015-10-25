@@ -22,11 +22,11 @@ a {
 /* header */
 
 #logo {
-  float: left;
   margin-right: 25px;
   font-size: 1.2em;
   color: #fff;
-  padding-top: 18px;
+  padding-left: 0;
+  padding-top: 17px;
   font-weight: bold;
   line-height: 1;
   &:active, &:selected{
