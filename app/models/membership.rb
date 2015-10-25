@@ -8,7 +8,7 @@ class Membership < ActiveRecord::Base
   validates :user_id, uniqueness: {scope: :period_id}
   validates :paak_id, uniqueness: {scope: :period_id}, if: :paak_id
 
-  scope :by_period_code, -> (code) { joins(:period).where(periods: {code: code})}
+  scope :by_period_code, -> (code) { joins(:period).where(periods: {code: Period.codes[code.to_sym]})}
   scope :current_in_paak, -> {
     today = Date.today.in_time_zone('Tokyo')
     tomorrow = today + 1.day
