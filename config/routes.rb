@@ -8,6 +8,15 @@ Rails.application.routes.draw do
       unlocks: 'users/unlocks'
     }
 
+  namespace :api, defaults: { format: :json } do
+    resources :users, only: [:index]
+
+    resources :records, only: [] do
+      collection do
+        get :latest_ts
+      end
+    end
+  end
 
   root 'welcome#index'
   get '/current', to: 'welcome#current'
@@ -27,4 +36,5 @@ Rails.application.routes.draw do
   end
 
   resources :records, only: [:index, :create]
+
 end

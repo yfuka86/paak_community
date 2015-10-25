@@ -1,29 +1,3 @@
 <h1 class='title'>今PAAKにいるメンバー</h1>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>Facebook</th>
-      <th>メンバーシップ</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @current_memberships.each do |m| %>
-      <tr>
-        <td><%= m.user.name %></td>
-        <td>
-          <% if m.user.try(:facebook_url).present? %>
-            <%= link_to m.user.facebook_url do %>
-              <span class='fa fa-facebook' />
-            <% end %>
-          <% end %>
-        </td>
-        <td><%= m.user.latest_period.try(:explanation) %></td>
-        <td><%= link_to '詳細を見る', m.user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id='user-board'></div>
