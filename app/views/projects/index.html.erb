@@ -6,7 +6,7 @@
       <th>名前</th>
       <th>所属</th>
       <th>Url</th>
-      <th>概要</th>
+      <th class='project-summary'>概要</th>
       <th>メンバー</th>
       <th></th>
     </tr>
@@ -17,8 +17,8 @@
       <tr>
         <td><%= project.name %></td>
         <td><%= project.period.try(:explanation) %></td>
-        <td><%= project.url %></td>
-        <td><%= project.summary[0, 70] %></td>
+        <td><%= link_to '見る', project.url %></td>
+        <td class='project-summary'><%= project.summary[0, 70] %></td>
         <td><%= project.users.pluck(:name).join(', ') %></td>
         <td><%= link_to '詳細を見る', project %></td>
       </tr>
