@@ -5,37 +5,43 @@
 <hr>
 
 <div>
-  <%= image_tag @project.image_url, class: 'img-rounded' %>
+  <%= image_tag @project.image_url, class: 'project-image img-rounded pull-left' %>
 </div>
 
-<p>
-  <strong>所属</strong>
-</p>
-<p>
-  <%= @project.period.try(:explanation) %>
-</p>
+<div class='project-profile'>
+  <p>
+    <strong>所属</strong>
+  </p>
+  <p>
+    <%= @project.period.try(:explanation) %>
+  </p>
 
-<p>
-  <strong>メンバー</strong>
-</p>
-<p>
-  <% @project.users.pluck(:name).map do |name| %>
-    <%= name %><br>
-  <% end %>
-</p>
+  <p>
+    <strong>メンバー</strong>
+  </p>
+  <p>
+    <% @project.users.pluck(:name).map do |name| %>
+      <%= name %><br>
+    <% end %>
+  </p>
 
-<p>
-  <strong>Url</strong>
-</p>
-<p>
-  <%= link_to @project.url, @project.url %>
-</p>
+  <p>
+    <strong>Url</strong>
+  </p>
+  <p>
+    <%= link_to @project.url, @project.url %>
+  </p>
 
-<p>
-  <strong>概要</strong>
-</p>
-<p>
-  <%= text_url_to_link( simple_format( sanitize @project.summary ) ).html_safe %>
-</p>
+  <p>
+    <strong>概要</strong>
+  </p>
+  <p>
+    <%= text_url_to_link( simple_format( sanitize @project.summary ) ).html_safe %>
+  </p>
+</div>
+
+<div class='clearfix'></div>
+
+<hr>
 
 <%= link_to 'プロジェクト一覧に戻る', projects_path, class: 'btn btn-default' %>
