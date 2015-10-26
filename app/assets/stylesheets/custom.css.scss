@@ -8,6 +8,10 @@ body {
   padding-top: 70px;
 }
 
+.container-inner {
+  padding: 0 20px;
+}
+
 a {
   color: #555;
   &:hover {
@@ -25,8 +29,7 @@ a {
   margin-right: 25px;
   font-size: 1.2em;
   color: #fff;
-  padding-left: 0;
-  padding-top: 17px;
+  padding: 17px;
   font-weight: bold;
   line-height: 1;
   &:active, &:selected{
@@ -43,7 +46,7 @@ a {
 
 footer {
   margin-top: 45px;
-  padding-top: 5px;
+  padding: 5px 20px 0;
   border-top: 1px solid #eaeaea;
   color: #999;
 
