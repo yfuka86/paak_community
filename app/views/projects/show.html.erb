@@ -22,14 +22,14 @@
   <strong>Url</strong>
 </p>
 <p>
-  <%= @project.url %>
+  <%= link_to @project.url, @project.url %>
 </p>
 
 <p>
   <strong>概要</strong>
 </p>
 <p>
-  <%= simple_format(h(@project.summary)) %>
+  <%= text_url_to_link( simple_format( sanitize @project.summary ) ).html_safe %>
 </p>
 
 <%= link_to '編集する', edit_project_path(@project), class: 'btn btn-default' if is_admin_or_project_member?(@project) %>
