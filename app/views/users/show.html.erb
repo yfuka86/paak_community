@@ -28,7 +28,7 @@
     <strong>bio</strong>
   </p>
   <p>
-    <%= @user.bio %>
+    <%= simple_format(h(@user.bio)) %>
   </p>
 </div>
 
