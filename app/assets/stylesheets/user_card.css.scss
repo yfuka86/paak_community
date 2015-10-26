@@ -7,32 +7,37 @@
     font-weight: 200;
   }
 
-  .user-card {
-    margin: 10px;
-    padding-bottom: 10px;
-    width: 200px;
-    float: left;
-    border-radius: 5px;
-    border: 1px solid #bbb;
-    .user-image {
-      margin: 0 auto 10px;
-      width: 200px;
-      height: 200px;
-    }
-    p {
-      padding: 0 15px;
-      margin: 0;
-      &.user-period {
-        font-size: 16px;
-        font-weight: 600;
-        color: #999;
+  .user-card-container {
+    text-align: center;
+    .user-card {
+      margin: 10px 0;
+      padding: 0 auto;
+      padding-bottom: 10px;
+      width: 150px;
+      display: inline-block;
+      border-radius: 5px;
+      border: 1px solid #bbb;
+      .user-image {
+        margin: 0 auto 10px;
+        width: 150px;
+        height: 150px;
       }
-      &.user-name {
-        font-size: 18px;
-        font-weight: 600;
-        color: #333;
-        .fa {
-          margin: 0 10px;
+      p {
+        text-align: left;
+        padding: 0 15px;
+        margin: 0;
+        &.user-period {
+          font-size: 14px;
+          font-weight: 600;
+          color: #999;
+        }
+        &.user-name {
+          font-size: 16px;
+          font-weight: 600;
+          color: #333;
+          .fa {
+            margin-left: 10px;
+          }
         }
       }
     }

@@ -122,11 +122,6 @@ textarea {
   margin-right: 10px;
 }
 
-.user-profile, .project-profile {
-  float: left;
-  padding: 0 0 0 20px;
-}
-
 .form-has-many {
   min-width: 80%;
 }
@@ -156,6 +151,13 @@ textarea {
   font-weight: 600;
 }
 
+.user-image-container, .project-image-container {
+  text-align: center;
+  margin: 20px 0;
+  width: 300px;
+  height: 300px;
+}
+
 .project-image {
   width: 300px;
   height: 300px;
@@ -163,4 +165,9 @@ textarea {
 
 .project-summary {
   max-width: 400px;
+}
+
+.user-profile, .project-profile {
+  float: left;
+  padding: 20px;
 }
