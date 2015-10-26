@@ -9,15 +9,13 @@
 <body>
   <%= render 'layouts/header' %>
   <div class="container">
-    <div class='container-inner'>
-        <% if notice.present? %>
-          <p class="bg-info main-notification"><%= notice %></p>
-        <% end %>
-        <% if alert.present? %>
-          <p class="bg-danger main-notification"><%= alert %></p>
-        <% end %>
-        <%= yield %>
-    </div>
+    <% if notice.present? %>
+      <p class="bg-info main-notification"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="bg-danger main-notification"><%= alert %></p>
+    <% end %>
+    <%= yield %>
     <%= render 'layouts/footer' %>
   </div>
 </body>
