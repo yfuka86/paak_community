@@ -19,5 +19,8 @@ class Membership < ActiveRecord::Base
     where('r2.id IS NULL').
     where('r1.code = ?', Record.codes["enter"])
   }
+  scope :has_user, -> {
+    joins(:user).where.not(users: {id: nil})
+  }
 end
 

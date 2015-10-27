@@ -1,6 +1,6 @@
 class Api::UsersController < Api::BaseController
   def index
-    @current_memberships = Membership.current_in_paak.includes(:user)
+    @current_memberships = Membership.current_in_paak.has_user.includes(:user)
 
     render json: {
       users: @current_memberships.map do |m|
