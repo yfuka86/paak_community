@@ -24,7 +24,7 @@ $(function(){
               $name = $("<p class='user-name'>" + u.name + "</p>");
               $facebook = $("<p><a href='" + u.facebook_url + "'><span class='fa fa-facebook' /></a></p>")
               $link.append([$image, $period, $name, $facebook]);
-              $div = $("<div class='user-card-container col-xs-6 col-sm-3 col-md-3 col-lg-2'></div>");
+              $div = $("<div class='user-card-container col-xs-6 col-sm-3 col-md-3 col-lg-3'></div>");
               $div.append($link);
 
               $('#user-board').append($div);
