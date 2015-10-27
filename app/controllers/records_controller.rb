@@ -2,7 +2,9 @@ class RecordsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @records = Record.order(timestamp: :desc).limit(100)
+    Time.zone = 'Tokyo'
+    today = Time.now.to_date
+    @records = Record.order(timestamp: :desc).where('timestamp > ?', today)
   end
 
   def create
