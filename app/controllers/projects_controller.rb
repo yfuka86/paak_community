@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
       @users = User.candidate
     end
 
-    def authenticate_member!
+    def authenticate_project_member!
       unless current_user.is_admin || current_user.in?(@project.users)
         redirece_to :back, notice: '権限がありません' and return
       end
