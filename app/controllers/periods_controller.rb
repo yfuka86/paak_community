@@ -37,7 +37,7 @@ class PeriodsController < ApplicationController
   end
 
   def add_member
-    Membership.create({period_id: @period.id}.merge(add_member_params))
+    Membership.new({period_id: @period.id}.merge(add_member_params)).save!
     redirect_to @period, notice: 'メンバーが追加されました' and return
   end
 
@@ -59,6 +59,6 @@ class PeriodsController < ApplicationController
     end
 
     def add_member_params
-      params.permit(:paak_id, :user_id, :name)
+      params.permit(:paak_id, :user_id, :name, :memo)
     end
 end

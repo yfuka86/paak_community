@@ -4,6 +4,7 @@
       <th>paak会員番号</th>
       <th>paak登録名</th>
       <th>ユーザー名</th>
+      <th>メモ</th>
       <th>facebook</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
         <td><%= membership.paak_id %></td>
         <td><%= membership.name %></td>
         <td><%= membership.user.try(:name) %></td>
+        <td><%= (membership.memo.try(:length) || 0) > 20 ? "#{membership.memo[0, 20]}..." : membership.memo %></td>
         <td>
           <% if membership.user.try(:facebook_url).present? %>
             <%= link_to membership.user.facebook_url do %>

@@ -23,6 +23,10 @@
     <%= f.label '該当ユーザーを選択' %><br>
     <%= f.select :user_id, options_for_select(@user_candidate.map{|user| [user.name, user.id]}), { prompt: 'なし' }, class: 'form-control' %>
   </div>
+  <div class="form-group">
+    <%= f.label 'メモ' %><br>
+    <%= f.text_field :memo, class: 'form-control' %>
+  </div>
   <div class="actions">
     <%= f.submit '保存', class: 'btn btn-primary' %>
   </div>

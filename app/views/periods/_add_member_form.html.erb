@@ -6,7 +6,10 @@
     <%= text_field_tag :name, params[:name], class: 'form-control', placeholder: '名前' %>
   </div>
   <div class='form-group'>
-    <%= select_tag :user_id, options_for_select(@user_candidate.map{|user| [user.name, user.id]}), class: 'form-control', prompt: 'ユーザーを選択（optional）' %>
+    <%= select_tag :user_id, options_for_select(@user_candidate.map{|user| [user.name, user.id]}), class: 'form-control', prompt: 'ユーザーを選択（任意）' %>
+  </div>
+  <div class='form-group'>
+    <%= text_field_tag :memo, params[:memo], class: 'form-control', placeholder: 'メモ（任意）' %>
   </div>
   <div class='form-group'>
     <%= submit_tag "追加する", class: 'btn btn-primary' %>

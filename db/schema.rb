@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022211534) do
+ActiveRecord::Schema.define(version: 20151027055220) do
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "paak_id",    limit: 4
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20151022211534) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "memo",       limit: 255
   end
 
   add_index "memberships", ["period_id", "paak_id"], name: "index_memberships_on_period_id_and_paak_id", unique: true, using: :btree
@@ -49,8 +50,10 @@ ActiveRecord::Schema.define(version: 20151022211534) do
     t.datetime "timestamp"
     t.integer  "membership_id", limit: 4
     t.integer  "code",          limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "card_id",       limit: 255
+    t.string   "memo",          limit: 255
   end
 
   add_index "records", ["membership_id"], name: "index_records_on_membership_id", using: :btree

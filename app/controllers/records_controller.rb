@@ -11,7 +11,7 @@ class RecordsController < ApplicationController
     membership = Membership.by_period_code(params[:period_code]).find_by(paak_id: params[:paak_id])
     redirect_to :back, alert: '存在しない会員です' and return unless membership
 
-    @record = Record.new(membership: membership, timestamp: DateTime.now)
+    @record = Record.new(membership: membership, timestamp: DateTime.now, card_id: params[:card_id], memo: params[:memo])
     if params[:commit].to_sym == :enter then @record.enter! else @record.leave! end
 
     if @record.save
