@@ -35,6 +35,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :records, only: [:index, :create]
+  resources :records, only: [:index, :create, :update]
 
 end

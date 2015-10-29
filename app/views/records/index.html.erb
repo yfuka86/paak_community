@@ -44,7 +44,16 @@
         <td><%= record.membership.name %></td>
         <td><%= record.timestamp.in_time_zone('Tokyo') %></td>
         <td><%= record.card_id %></td>
-        <td><%= record.memo %></td>
+        <td>
+          <%= form_tag record_path(record.id), method: :put, class: 'form-inline' do %>
+            <div class="form-group">
+              <%= text_field_tag :memo, record.memo, prompt: '会員種別', class: 'form-control' %>
+            </div>
+            <div class='form-group'>
+              <%= submit_tag '保存', class: 'btn btn-default', data: { disable_with: "保存中..." } %>
+            </div>
+          <% end %>
+        </td>
         <td class='record-code'>
           <% if record.code == 'enter' %>
             <span class='text-primary'>入館</span>

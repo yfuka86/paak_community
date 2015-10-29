@@ -22,4 +22,14 @@ class RecordsController < ApplicationController
       render :back, alert: '記録に失敗しました'
     end
   end
+
+  def update
+    @record = Record.find_by(id: params[:id])
+    @record.memo = params[:memo]
+    if @record.save!
+      redirect_to records_path, notice: 'メモが変更されました' and return
+    else
+      render :back, alert: 'メモの編集に失敗しました' and return
+    end
+  end
 end
