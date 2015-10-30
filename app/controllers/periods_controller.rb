@@ -1,5 +1,4 @@
 class PeriodsController < ApplicationController
-  before_action :authenticate_admin!
   before_action :set_period, only: [:show, :edit, :update, :add_member, :destroy]
 
   def index

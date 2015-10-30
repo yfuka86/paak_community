@@ -22,11 +22,7 @@ Rails.application.routes.draw do
   get '/current', to: 'welcome#current'
   get '/pending', to: 'welcome#pending'
 
-  resources :users, only: [:index, :show, :edit, :update, :destroy] do
-    member do
-      put 'accept'
-    end
-  end
+  resources :users, only: [:index, :show, :edit, :update, :destroy]
   resources :projects
   resources :memberships, only: [:edit, :update, :destroy]
   resources :periods do
@@ -35,6 +31,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :records, only: [:index, :create, :update]
+  resources :records, only: [:index, :create, :update] do
+    member do
+      put 'leave'
+    end
+  end
 
 end

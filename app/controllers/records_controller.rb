@@ -1,6 +1,4 @@
 class RecordsController < ApplicationController
-  before_action :authenticate_admin!
-
   def index
     Time.zone = 'Tokyo'
     today = Time.now.to_date
@@ -30,6 +28,17 @@ class RecordsController < ApplicationController
       redirect_to records_path, notice: 'メモが変更されました' and return
     else
       render :back, alert: 'メモの編集に失敗しました' and return
+    end
+  end
+
+  def leave
+    @old_record = Record.find_by(id: params[:id])
+    @record = Record.new(membership: @old_record.membership, timestamp: DateTime.now, card_id: @old_record.card_id)
+    @record.leave!
+    if @record.save!
+      redirect_to records_path, notice: '退館が完了しました' and return
+    else
+      render :back, alert: '退館に失敗しました' and return
     end
   end
 end

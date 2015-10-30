@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_admin!, only: [:accept, :destroy]
+  skip_before_action :authenticate_admin!, only: [:index, :show, :edit, :update]
   before_action :set_user, only: [:show, :edit, :accept, :update, :destroy]
 
   # GET /users
@@ -26,10 +26,6 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user, notice: 'User was successfully updated.' and return
     end
-  end
-
-  def accept
-
   end
 
   # DELETE /users/1

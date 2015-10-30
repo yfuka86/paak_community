@@ -9,6 +9,12 @@ class Membership < ActiveRecord::Base
   validates :paak_id, uniqueness: {scope: :period_id}, if: :paak_id
 
   scope :by_period_code, -> (code) { joins(:period).where(periods: {code: Period.codes[code.to_sym]})}
+  scope :with_last_record, -> {
+    joins("LEFT OUTER JOIN (SELECT * FROM records) AS r1 ON (memberships.id = r1.membership_id)").
+    joins("LEFT OUTER JOIN (SELECT * FROM records) AS r2 ON
+          (memberships.id = r2.membership_id AND (r1.created_at < r2.created_at OR r1.created_at = r2.created_at AND r1.id < r2.id))").
+    where('r2.id IS NULL')
+  }
   scope :current_in_paak, -> {
     Time.zone = 'Tokyo'
     today = Time.now.to_date
@@ -22,5 +28,9 @@ class Membership < ActiveRecord::Base
   scope :has_user, -> {
     joins(:user).where.not(users: {id: nil})
   }
+
+  def last_record_id
+    records.order(timestamp: :desc).first.id
+  end
 end
 

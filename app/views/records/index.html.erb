@@ -21,7 +21,7 @@
   </div>
 <% end %>
 
-<table class='table'>
+<table class='table records-table'>
   <thead>
     <tr>
       <th>期</th>
@@ -31,7 +31,7 @@
       <th>時間</th>
       <th>カード番号</th>
       <th>メモ</th>
-      <th></th>
+      <th colspan='2'></th>
     </tr>
   </thead>
 
@@ -56,9 +56,18 @@
         </td>
         <td class='record-code'>
           <% if record.code == 'enter' %>
-            <span class='text-primary'>入館</span>
+            <span class='text-primary'>入館記録</span>
           <% elsif record.code == 'leave' %>
-            <span class='text-danger'>退館</span>
+            <span class='text-danger'>退館記録</span>
+          <% end %>
+        </td>
+        <td class='record-code'>
+          <% if Membership.find_by(id: record.membership_id).last_record_id == record.id && record.enter? %>
+            <%= form_tag leave_record_path(record.id), method: :put, class: 'form-inline' do %>
+              <div class='form-group'>
+                <%= submit_tag '退館させる', class: 'btn btn-danger' %>
+              </div>
+            <% end %>
           <% end %>
         </td>
       </tr>

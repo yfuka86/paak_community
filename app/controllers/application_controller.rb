@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   before_action :authenticate_member!
+  before_action :authenticate_admin!
 
   def authenticate_admin!
     unless current_user.try(:is_admin)

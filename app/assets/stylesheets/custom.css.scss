@@ -151,6 +151,14 @@ textarea {
   font-weight: 600;
 }
 
+.records-table {
+  &.table {
+    tbody > tr > td {
+      line-height: 34px;
+    }
+  }
+}
+
 .user-image-container, .project-image-container {
   text-align: center;
   margin: 20px 0;
