@@ -41,7 +41,7 @@
         <td><%= record.membership.period.explanation %></td>
         <td><%= record.membership.period.code %></td>
         <td><%= record.membership.paak_id %></td>
-        <td><%= record.membership.name %></td>
+        <td><%= record.membership.name[0, 8] %></td>
         <td><%= record.timestamp.in_time_zone('Tokyo') %></td>
         <td><%= record.card_id %></td>
         <td>
@@ -56,9 +56,9 @@
         </td>
         <td class='record-code'>
           <% if record.code == 'enter' %>
-            <span class='text-primary'>入館記録</span>
+            <span class='text-primary'>入館</span>
           <% elsif record.code == 'leave' %>
-            <span class='text-danger'>退館記録</span>
+            <span class='text-danger'>退館</span>
           <% end %>
         </td>
         <td class='record-code'>
