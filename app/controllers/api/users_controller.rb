@@ -1,4 +1,6 @@
 class Api::UsersController < Api::BaseController
+  skip_before_action :authenticate_admin!
+
   def index
     @current_memberships = Membership.current_in_paak.has_user.includes(:user)
 
