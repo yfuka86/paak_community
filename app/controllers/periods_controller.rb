@@ -41,9 +41,10 @@ class PeriodsController < ApplicationController
   end
 
   def destroy
-    if @period.destroy
-      redirect_to periods_url, notice: 'Period was successfully destroyed.' and return
-    end
+    # if @period.destroy
+    #   redirect_to periods_url, notice: 'Period was successfully destroyed.' and return
+    # end
+    redirect_to periods_url, notice: 'この機能は無効になっています' and return
   end
 
   private

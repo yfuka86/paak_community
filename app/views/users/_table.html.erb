@@ -21,7 +21,7 @@
         </td>
         <td><%= user.latest_period.try(:explanation) %></td>
         <td><%= link_to '詳細を見る', user %></td>
-        <% if current_user.is_admin %>
+        <% if current_user.is_admin && deletable %>
           <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当にこのユーザーを削除してもよろしいですか？' } %></td>
         <% end %>
       </tr>
