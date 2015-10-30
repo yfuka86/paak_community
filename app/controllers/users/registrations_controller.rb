@@ -21,7 +21,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    layout
     @user = current_user
     if (@user.provider && @user.update(user_params)) || (!@user.provider && @user.update_with_password(user_params))
       redirect_to @user, notice: '登録情報を編集しました。' and return
