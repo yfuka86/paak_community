@@ -26,6 +26,17 @@
     <%= link_to @user.url, @user.url %>
   </p>
 
+  <% if @user.try(:facebook_url).present? %>
+    <p>
+      <strong>facebook_url</strong>
+    </p>
+    <p>
+      <%= link_to @user.facebook_url do %>
+        <span class='fa fa-facebook' />
+      <% end %>
+    </p>
+  <% end %>
+
   <p>
     <strong>bio</strong>
   </p>
