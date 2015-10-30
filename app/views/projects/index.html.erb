@@ -19,7 +19,12 @@
         <td><%= project.period.try(:explanation) %></td>
         <td><%= link_to '見る', project.url %></td>
         <td class='project-summary'><%= project.summary[0, 40] %></td>
-        <td><%= project.users.pluck(:name).join(', ') %></td>
+        <td>
+          <% project.users.each_with_index do |user, i| %>
+            <%= link_to user.name, user %>
+            <%= ', ' unless i == project.users.length - 1 %>
+          <% end %>
+        </td>
         <td><%= link_to '詳細を見る', project %></td>
       </tr>
     <% end %>

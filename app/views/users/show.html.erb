@@ -8,7 +8,7 @@
 <hr>
 
 <div class='col-xs-12 col-sm-6 col-md-5 col-lg-4 user-image-container'>
-  <%= image_tag @user.image_url + '?width=300&height=300', class: 'img-rounded', width: 300, height: 300 %>
+  <%= image_tag @user.image_url.try(:+, '?width=300&height=300'), class: 'img-rounded', width: 300, height: 300 %>
 </div>
 
 <div class='col-xs-12 col-sm-6 col-md-7 col-lg-8 user-profile'>
