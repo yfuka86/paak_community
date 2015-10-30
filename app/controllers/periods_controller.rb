@@ -3,7 +3,7 @@ class PeriodsController < ApplicationController
   before_action :set_period, only: [:show, :edit, :update, :add_member, :destroy]
 
   def index
-    @periods = Period.all
+    @periods = Period.all.order(number: :asc)
   end
 
   def show
