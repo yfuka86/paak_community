@@ -1,4 +1,6 @@
 class Users::PasswordsController < Devise::PasswordsController
+  skip_before_action :authenticate_admin!
+
   # GET /resource/password/new
   def new
     redirect_to_root
