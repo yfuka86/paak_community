@@ -7,7 +7,7 @@ class PeriodsController < ApplicationController
   end
 
   def show
-    @memberships = @period.memberships
+    @memberships = @period.memberships.order(paak_id: :asc)
     @user_candidate = User.candidate
   end
 

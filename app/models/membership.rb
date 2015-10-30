@@ -5,7 +5,7 @@ class Membership < ActiveRecord::Base
   has_many :records
 
   validates :period_id, presence: true
-  validates :user_id, uniqueness: {scope: :period_id}
+  validates :user_id, uniqueness: {scope: :period_id}, if: :user_id
   validates :paak_id, uniqueness: {scope: :period_id}, if: :paak_id
 
   scope :by_period_code, -> (code) { joins(:period).where(periods: {code: Period.codes[code.to_sym]})}
