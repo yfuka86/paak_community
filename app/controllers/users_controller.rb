@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @accepted_users = User.accepted.order('memberships.period_id ASC')
+    @accepted_users = User.accepted
     @unaccepted_users = User.unaccepted
   end
 
