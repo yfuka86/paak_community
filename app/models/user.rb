@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  scope :accepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where.not(memberships: {user_id: nil}).group(:id) }
+  scope :accepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where.not(memberships: {user_id: nil}) }
   scope :unaccepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where(memberships: {user_id: nil}) }
   scope :candidate, -> { order(name: :asc) }
 
