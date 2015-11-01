@@ -38,10 +38,10 @@
   <tbody>
     <% @records.each do |record| %>
       <tr>
-        <td><%= record.membership.try(:period).try(:explanation) %></td>
-        <td><%= record.membership.try(:period).try(:code) %></td>
-        <td><%= record.membership.try(:paak_id) %></td>
-        <td><%= record.membership.try(:name).try(:[], 0, 8) %></td>
+        <td><%= record.membership.try(:period).try(:explanation) || '削除済み' %></td>
+        <td><%= record.membership.try(:period).try(:code) || '削除済み' %></td>
+        <td><%= record.membership.try(:paak_id) || '削除済み' %></td>
+        <td><%= record.membership.try(:name).try(:[], 0, 8) || '削除済み' %></td>
         <td><%= record.timestamp.in_time_zone('Tokyo') %></td>
         <td><%= record.card_id %></td>
         <td>
@@ -62,7 +62,7 @@
           <% end %>
         </td>
         <td class='record-code'>
-          <% if Membership.find_by(id: record.membership_id).last_record_id == record.id && record.enter? %>
+          <% if Membership.find_by(id: record.membership_id) && Membership.find_by(id: record.membership_id).last_record_id == record.id && record.enter? %>
             <%= form_tag leave_record_path(record.id), method: :put, class: 'form-inline' do %>
               <div class='form-group'>
                 <%= submit_tag '退館させる', class: 'btn btn-danger' %>

@@ -2,8 +2,6 @@ class Membership < ActiveRecord::Base
   belongs_to :user
   belongs_to :period
 
-  has_many :records, dependent: :destroy
-
   validates :period_id, presence: true
   validates :user_id, uniqueness: {scope: :period_id}, if: :user_id
   validates :paak_id, uniqueness: {scope: :period_id}, if: :paak_id
