@@ -2,7 +2,7 @@ class Membership < ActiveRecord::Base
   belongs_to :user
   belongs_to :period
 
-  has_many :records
+  has_many :records, dependent: :destroy
 
   validates :period_id, presence: true
   validates :user_id, uniqueness: {scope: :period_id}, if: :user_id
@@ -30,7 +30,7 @@ class Membership < ActiveRecord::Base
   }
 
   def last_record_id
-    records.order(timestamp: :desc).first.id
+    records.order(timestamp: :desc).first.try(:id)
   end
 end
 
