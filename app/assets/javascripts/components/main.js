@@ -32,9 +32,10 @@ function reload () {
             $link.append([$image, $period, $name, $facebook]);
             $('#user-board').append($link);
           })
+          var cardWidth = $(window).width() > 970 ? 250 : 200;
           $('#user-board').masonry({
             itemSelector: '.user-card',
-            columnWidth: 250
+            columnWidth: cardWidth
           });
         }
       });
