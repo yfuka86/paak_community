@@ -34,7 +34,7 @@ function reload () {
           })
           $('#user-board').masonry({
             itemSelector: '.user-card',
-            columnWidth: 200
+            columnWidth: 250
           });
         }
       });
