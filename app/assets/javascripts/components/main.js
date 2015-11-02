@@ -4,10 +4,21 @@ $(function(){
   if (location.pathname === '/current') {
     reload();
     setInterval(reload, 3000);
+    $(window).resize(function() {
+      setMasonry();
+    });
   }
 })
 
 var timestamp = null;
+
+function setMasonry () {
+  var cardWidth = $(window).width() > 970 ? 228 : 180;
+  $('#user-board').masonry({
+    itemSelector: '.user-card',
+    columnWidth: cardWidth
+  });
+}
 
 function reload () {
   $.ajax({
@@ -32,11 +43,7 @@ function reload () {
             $link.append([$image, $period, $name, $facebook]);
             $('#user-board').append($link);
           })
-          var cardWidth = $(window).width() > 970 ? 228 : 170;
-          $('#user-board').masonry({
-            itemSelector: '.user-card',
-            columnWidth: cardWidth
-          });
+          setMasonry();
         }
       });
 
