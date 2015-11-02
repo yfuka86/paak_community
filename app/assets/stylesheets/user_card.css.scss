@@ -8,7 +8,7 @@
   }
 
   .user-card {
-    margin: 10px 0;
+    margin: 10px 14px;
     padding: 0 auto;
     padding-bottom: 10px;
     width: 200px;
@@ -48,6 +48,7 @@
 
   @media (max-width: 970px) {
     .user-card {
+      margin: 10px 15px;
       width: 150px;
       .user-image {
         height: 150px;
