@@ -32,7 +32,7 @@ function reload () {
             $link.append([$image, $period, $name, $facebook]);
             $('#user-board').append($link);
           })
-          var cardWidth = $(window).width() > 970 ? 250 : 200;
+          var cardWidth = $(window).width() > 970 ? 228 : 180;
           $('#user-board').masonry({
             itemSelector: '.user-card',
             columnWidth: cardWidth
