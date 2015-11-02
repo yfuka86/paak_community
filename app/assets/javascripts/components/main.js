@@ -13,7 +13,7 @@ $(function(){
 var timestamp = null;
 
 function setMasonry () {
-  var cardWidth = $(window).width() > 970 ? 228 : 180;
+  var cardWidth = $(window).width() > 970 ? 228 : 170;
   $('#user-board').masonry({
     itemSelector: '.user-card',
     columnWidth: cardWidth
