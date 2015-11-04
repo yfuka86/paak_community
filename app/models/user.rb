@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  scope :accepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where.not(memberships: {user_id: nil}).group(:id) }
-  scope :unaccepted, -> { joins('LEFT OUTER JOIN memberships ON memberships.user_id = users.id').where(memberships: {user_id: nil}) }
+  scope :accepted, -> { joins(:memberships).where.not(memberships: {user_id: nil}).group(:id) }
+  scope :unaccepted, -> { joins(:memberships).where(memberships: {user_id: nil}) }
   scope :candidate, -> { order(name: :asc) }
 
   def self.from_omniauth(auth)
