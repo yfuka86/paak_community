@@ -14,12 +14,7 @@ class User < ActiveRecord::Base
   scope :accepted, -> { joins(:memberships).where.not(memberships: {user_id: nil}).group(:id) }
   scope :unaccepted, -> { joins(:memberships).where(memberships: {user_id: nil}) }
   scope :candidate, -> { order(name: :asc) }
-  scope :order_by_last_period, -> {
-    joins(:periods).
-    order("(SELECT periods.end_date FROM periods
-          ORDER BY (CASE periods.end_date WHEN NULL THEN '2050-01-01' ELSE periods.end_date END) DESC
-          LIMIT 1) DESC")
-  }
+  scope :order_by_last_period, -> { joins(:periods).group('periods.end_date').order('periods.end_date') }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
