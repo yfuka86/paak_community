@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @accepted_users = User.accepted.joins(:periods).order("CHAR_LENGTH(users.bio) DESC, (CASE periods.end_date WHEN NULL THEN '2050-01-01' ELSE periods.end_date END) DESC")
+    @accepted_users = User.accepted.order("CHAR_LENGTH(users.bio)")
     @unaccepted_users = User.unaccepted
   end
 
