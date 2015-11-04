@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @accepted_users = User.accepted.with_last_period.order("CHAR_LENGTH(users.bio), p1.end_date")
+    @accepted_users = User.accepted.order("CHAR_LENGTH(users.bio)")
     @unaccepted_users = User.unaccepted
   end
 
