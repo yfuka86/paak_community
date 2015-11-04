@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   scope :unaccepted, -> { joins(:memberships).where(memberships: {user_id: nil}) }
   scope :candidate, -> { order(name: :asc) }
   scope :order_by_last_period, -> {
-    joins(:periods).having("periods.end_date = MAX(periods.end_date)").group('periods.id').order('periods.end_date DESC, periods.id DESC')
+    joins(:periods).having("ISNULL(periods.end_date, 0) = ISNULL(MAX(periods.end_date), 0)").group('periods.id').order('periods.end_date DESC, periods.id DESC')
   }
 
   def self.from_omniauth(auth)
