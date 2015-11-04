@@ -13,80 +13,83 @@
 
 ActiveRecord::Schema.define(version: 20151027055220) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "memberships", force: :cascade do |t|
-    t.integer  "paak_id",    limit: 4
-    t.integer  "user_id",    limit: 4
-    t.integer  "period_id",  limit: 4,   null: false
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "memo",       limit: 255
+    t.integer  "paak_id"
+    t.integer  "user_id"
+    t.integer  "period_id",  null: false
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "memo"
   end
 
   add_index "memberships", ["period_id", "paak_id"], name: "index_memberships_on_period_id_and_paak_id", unique: true, using: :btree
   add_index "memberships", ["period_id", "user_id"], name: "index_memberships_on_period_id_and_user_id", unique: true, using: :btree
 
   create_table "periods", force: :cascade do |t|
-    t.integer  "number",      limit: 4
-    t.integer  "code",        limit: 4
-    t.string   "explanation", limit: 255
+    t.integer  "number"
+    t.integer  "code"
+    t.string   "explanation"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "period_id",  limit: 4
-    t.string   "url",        limit: 255
-    t.string   "image_url",  limit: 255
-    t.text     "summary",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "name"
+    t.integer  "period_id"
+    t.string   "url"
+    t.string   "image_url"
+    t.text     "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "records", force: :cascade do |t|
     t.datetime "timestamp"
-    t.integer  "membership_id", limit: 4
-    t.integer  "code",          limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "card_id",       limit: 255
-    t.string   "memo",          limit: 255
+    t.integer  "membership_id"
+    t.integer  "code"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "card_id"
+    t.string   "memo"
   end
 
   add_index "records", ["membership_id"], name: "index_records_on_membership_id", using: :btree
 
   create_table "user_projects", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4, null: false
-    t.integer  "project_id", limit: 4, null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "user_id",    null: false
+    t.integer  "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "user_projects", ["project_id", "user_id"], name: "index_user_projects_on_project_id_and_user_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255,   default: "", null: false
-    t.string   "encrypted_password",     limit: 255,   default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.string   "name",                   limit: 255,                null: false
-    t.string   "url",                    limit: 255
-    t.string   "image_url",              limit: 255
-    t.text     "bio",                    limit: 65535
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "name",                                null: false
+    t.string   "url"
+    t.string   "image_url"
+    t.text     "bio"
     t.boolean  "is_admin"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

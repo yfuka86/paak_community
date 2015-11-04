@@ -1,5 +1,5 @@
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   reconnect: true
   pool: 5
@@ -9,18 +9,17 @@ default: &default
 development:
   <<: *default
   database: paak_development
-  username: mysql
-  password: 'root'
+  username: paak
+  password: 'paak2015'
 
 test:
   <<: *default
   database: paak_test
-  username: mysql
-  password: 'root'
+  username: paak
+  password: 'paak2015'
 
 production:
   <<: *default
-  adapter: postgresql
   database: paak_production
   username: paak
   password: 'paak2015'
