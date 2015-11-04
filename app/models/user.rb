@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
     joins("LEFT OUTER JOIN (SELECT * FROM periods) AS p1 ON (m.period_id = p1.id)").
     joins("LEFT OUTER JOIN (SELECT * FROM periods) AS p2 ON
           (m.period_id = p2.id AND (p1.created_at < p2.created_at OR p1.created_at = p2.created_at AND p1.id < p2.id))").
-    where('p2.id IS NULL')
+    where('p2.id IS NULL').
+    group('p1.id')
   }
 
   def self.from_omniauth(auth)
