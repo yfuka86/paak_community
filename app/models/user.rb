@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  scope :accepted, -> { joins(:memberships).where.not(memberships: {user_id: nil}).group(:id) }
-  scope :unaccepted, -> { joins(:memberships).where(memberships: {user_id: nil}) }
+  scope :accepted, -> { includes(:memberships).where.not(memberships: {id: nil}).group(:id) }
+  scope :unaccepted, -> { includes(:memberships).where(memberships: {id: nil}) }
   scope :candidate, -> { order(name: :asc) }
   scope :order_by_last_period, -> {
     joins(:periods).having('periods.end_date = MAX(periods.end_date)').group('periods.id').order('periods.end_date DESC, periods.id DESC')
