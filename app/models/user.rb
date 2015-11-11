@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  scope :accepted, -> { joins(:memberships).where.not(memberships: {user_id: nil}).group(:id) }
+  scope :accepted, -> { includes(:memberships).where.not(memberships: {user_id: nil}) }
   scope :unaccepted, -> { includes(:memberships).where(memberships: {user_id: nil}) }
   scope :candidate, -> { order(name: :asc) }
   scope :order_by_last_period, -> {
