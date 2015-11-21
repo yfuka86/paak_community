@@ -1,8 +1,9 @@
 class RecordsController < ApplicationController
   def index
     Time.zone = 'Tokyo'
-    today = Time.now.to_date
-    @records = Record.order(timestamp: :desc).where('timestamp > ?', today)
+    date = params[:period].to_date || Time.now.to_date
+
+    @records = Record.order(timestamp: :desc).where('timestamp >= ? AND timestamp < ?', date, date + 1.day)
   end
 
   def create
