@@ -9,6 +9,7 @@ class GoogleAPIClient
     @calendar.list_events(ENV['GOOGLE_CALENDAR_ID'],
                           max_results: max_results,
                           time_min: Time.now.iso8601,
+                          fields: 'items(summary,start,end,location)'
                          ).items
   end
 end
