@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get '/current', to: 'welcome#current'
+  get '/events', to: 'welcome#events'
   get '/pending', to: 'welcome#pending'
 
   resources :users, only: [:index, :show, :edit, :update, :destroy]

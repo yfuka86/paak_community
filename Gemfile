@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rails-erd'
 
+gem 'google-api-client', '0.9'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.2'
   gem 'factory_girl_rails', '~> 4.4.1'
