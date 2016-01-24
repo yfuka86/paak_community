@@ -37,6 +37,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.4.1'
   # for tracking performance
   # gem 'rack-mini-profiler', require: false
+  gem 'dotenv-rails'
 
   # for DEBUG
   gem 'pry-rails'
