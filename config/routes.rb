@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:index]
+    resources :events, only: [:index]
 
     resources :records, only: [] do
       collection do
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get '/current', to: 'welcome#current'
-  get '/events', to: 'welcome#events'
   get '/pending', to: 'welcome#pending'
 
   resources :users, only: [:index, :show, :edit, :update, :destroy]

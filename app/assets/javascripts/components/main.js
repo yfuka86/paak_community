@@ -8,6 +8,31 @@ $(function(){
       setMasonry();
     });
   }
+  // loading events
+  $.ajax({
+    url: location.origin + '/api/events'
+  }).done(function(res) {
+    $('#event-board').empty()
+    var div = $("<div class='panel panel-default' />");
+    var calendarUrl = "https://calendar.google.com/calendar/embed?src=techlabpaak@gmail.com&ctz=Asia/Tokyo";
+    div.append("<div class='panel-heading'> 直近のイベント </div>");
+    if (res.events.length === 0) {
+      div.append("<div class='panel-body'>No evnets to show</div>");
+    } else {
+      var table = $("<table class='table' />");
+      res.events.forEach(function(e){
+        var tr = $("<tr>");
+        var date = e.start.date_time ? new Date(e.start.date_time) : new Date(e.start.date);
+
+        tr.append("<td>"+ formatDate(date) +"</td>");
+        tr.append("<td>"+ e.summary + "</td>");
+        table.append(tr);
+      });
+      div.append(table);
+    }
+    div.append("<div class='panel-footer'><a href='" + calendarUrl + "'> Google Calendar</a></div>");
+    $('#event-board').append(div);
+  });
 })
 
 var timestamp = null;
@@ -18,6 +43,14 @@ function setMasonry () {
     itemSelector: '.user-card',
     columnWidth: cardWidth
   });
+}
+
+function formatDate(date) {
+  var format = "YYYY-MM-DD";
+  format = format.replace(/YYYY/g, date.getFullYear());
+  format = format.replace(/MM/g, ('0'+(date.getMonth()+1)).slice(-2));
+  format = format.replace(/DD/g, ('0'+(date.getDate()+1)).slice(-2));
+  return format;
 }
 
 function reload () {
@@ -50,4 +83,6 @@ function reload () {
       timestamp = ts;
     }
   });
+
+
 }
