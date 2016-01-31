@@ -16,6 +16,12 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def events
+    render json: {
+      events: GoogleAPIClient.get_calendar_events
+    }
+  end
+
   def current
   end
 end
