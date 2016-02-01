@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:index]
+    resources :events, only: [:index]
 
     resources :records, only: [] do
       collection do

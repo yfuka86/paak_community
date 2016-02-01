@@ -42,6 +42,3 @@ Rails.application.configure do
   # General Settings
   config.app_domain = 'localhost:3000'
 end
-
-FACEBOOK_APP_ID = '1612562599005046'
-FACEBOOK_APP_SECRET = '1537fabd9ec1b1594344e351837d61de'
