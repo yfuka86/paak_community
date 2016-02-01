@@ -15,7 +15,9 @@ body {
 
 .container {
   width: 90% !important;
-  min-width: 720px !important;
+  @media (max-width: 970px) {
+    width: 100% !important;
+  }
 }
 
 a {
