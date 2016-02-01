@@ -21,7 +21,11 @@ $(function(){
       div.append("<div class='panel-body'>No evnets to show</div>");
     } else {
       var table = $("<table class='table' />");
-      res.events.forEach(function(e){
+      res.events.sort(function(a, b) {
+        var aTime = a.start.date_time ? new Date(a.start.date_time) : new Date(a.start.date);
+        var bTime = b.start.date_time ? new Date(b.start.date_time) : new Date(b.start.date);
+        return aTime - bTime;
+      }).forEach(function(e){
         var tr = $("<tr>");
         var start = e.start.date_time ? new Date(e.start.date_time) : new Date(e.start.date);
         var end = e.end.date_time ? new Date(e.end.date_time) : new Date(e.end.date);
