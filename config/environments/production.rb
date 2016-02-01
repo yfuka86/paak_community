@@ -80,7 +80,3 @@ Rails.application.configure do
   # General Settings
   config.app_domain = 'www.techlabpaak.org'
 end
-
-FACEBOOK_APP_ID = '1612545385673434'
-FACEBOOK_APP_SECRET = '7349640e47c452837d5ea771d29712d0'
-
