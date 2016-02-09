@@ -190,3 +190,13 @@ textarea {
   float: left;
   padding: 20px;
 }
+
+#event-board {
+  margin-top: 40px;
+  table {
+    td {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+}
