@@ -46,7 +46,7 @@ var masonry = null;
 function setMasonry () {
   var cardWidth = $(window).width() > 970 ? 228 : 170;
   if (masonry) {
-    masonry.masonry();
+    masonry.masonry('layout');
   } else {
     masonry = $('#user-board').masonry({
       itemSelector: '.user-card',
