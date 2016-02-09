@@ -4,7 +4,6 @@ $(function(){
   if (location.pathname === '/current') {
     reload();
     setInterval(reload, 3000);
-    setInterval(setMasonry, 1000);
     $(window).resize(function() {
       setTimeout(setMasonry, 100);
     });
