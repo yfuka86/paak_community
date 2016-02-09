@@ -41,6 +41,7 @@ $(function(){
 })
 
 var timestamp = null;
+var masonry = null;
 
 function setMasonry () {
   var cardWidth = $(window).width() > 970 ? 228 : 170;
