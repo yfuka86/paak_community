@@ -44,10 +44,14 @@ var timestamp = null;
 
 function setMasonry () {
   var cardWidth = $(window).width() > 970 ? 228 : 170;
-  masonry = $('#user-board').masonry({
-    itemSelector: '.user-card',
-    columnWidth: cardWidth
-  }).masonry('layout');
+  if (masonry) {
+    masonry.masonry('reload');
+  } else {
+    masonry = $('#user-board').masonry({
+      itemSelector: '.user-card',
+      columnWidth: cardWidth
+    }).masonry('layout');
+  }
 }
 
 function formatDate(date) {
