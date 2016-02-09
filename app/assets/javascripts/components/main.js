@@ -87,7 +87,7 @@ function reload () {
             $link.append([$image, $period, $name, $facebook]);
             $('#user-board').append($link);
           })
-          setTimeout(setMasonry, 100);
+          setTimeout(setMasonry, 1000);
         }
       });
 
